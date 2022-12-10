@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Online Map</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+    </head>
+    <body>
+        <div id="map" style="width: 800px; height: 1000px;">
+        </div>
+        <div id="popup" class="ol-popup">
+            <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+            <div id="popup-content"></div>
+        </div>
+    </body>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <script>
+
+var map = L.map('map').setView([15.2709, 120.6381], 20);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 20
+}).addTo(map);
+
+
+//pampanga,philppines
+L.marker([15.2709, 121.1188]).addTo(map);
+
+//kuala lumpur, malaysia
+L.marker([3.1391, 101.6868]).addTo(map);
+
+//buxoro, pakistan
+L.marker([36.138,71.279]).addTo(map);
+
+//doha, qatar
+L.marker([25.4172,51.9063]).addTo(map);
+
+//manchester, UK
+L.marker([53.4425,-2.2334]).addTo(map);
+
+//cape town, south africa
+L.marker([6.7481, 14.5580]).addTo(map);
+
+
+//bahrain
+//ukraine
+//afghanistan
+//vienna,austria
+var latlngs = [[26.0963, 50.8859],[48.447, 31.182],[34.056, 67.704],[32.620, 53.683],[36.3906,25.46201],
+[39.0722, 21.8220]];
+var polygon = L.polygon(latlngs, {color: 'red'}).addTo(map);
+map.fitBounds(polygon.getBounds());
+
+//POLYLINE
+var latlngs = [
+    [-11.92534, 18.42446],
+    [55.1523,-9.5618],
+    [28.85643, 2.35253],
+    [-13.86872, 151.20930],
+    [-24.20802, 16.37397]
+
+];
+var polyline = L.polyline(latlngs, {color: 'yellow'}).addTo(map);
+map.fitBounds(polyline.getBounds());
+
+//INITIAL
+var polyline_latlngs = [
+    [[56.837, -86.770],
+     [45.5802, -84.8833],
+     [56.837, -86.770],
+     [47.473, -92.510],
+     [56.3727, -97.5725],
+     [45.6020, -99.0848]
+    ]
+];
+polyline = L.polyline(polyline_latlngs, {color: 'red'}).addTo(map);
+
+
+L.circle([70.5, 30.5], {radius: 2000}).addTo(map);
+
+    </script>
+</html>
